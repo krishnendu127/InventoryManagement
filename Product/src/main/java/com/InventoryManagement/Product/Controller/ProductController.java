@@ -1,12 +1,22 @@
 package com.InventoryManagement.Product.Controller;
 
+import com.InventoryManagement.Product.DTO.ProductRequest;
+import com.InventoryManagement.Product.Service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductController {
+    private final ProductService productService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping("/createProduct")
+    public void createProduct(@RequestBody ProductRequest productRequest){
+        productService.createProduct(productRequest);
+    }
 }

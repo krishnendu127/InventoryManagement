@@ -1,5 +1,6 @@
 package com.InventoryManagement.Product.Service;
 
+import com.InventoryManagement.Product.DTO.ProductRequest;
 import com.InventoryManagement.Product.Entity.ProductEntity;
 import com.InventoryManagement.Product.Repository.ProductRepository;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Slf4j
 public class ProductService {
     private final ProductRepository productRepository;
-    public void createProduct(@RequestBody ){
-
+    public void createProduct(@RequestBody ProductRequest productRequest){
+        ProductEntity product =ProductEntity.builder()
+                .productId(productRequest.id())
+                .productName(productRequest.name())
+                .productDescription(productRequest.description())
+                .build();
+        productRepository.save(product);
     }
 }
