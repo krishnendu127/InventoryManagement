@@ -28,4 +28,16 @@ public class InventoryService {
         inventory.setQuantity(quantity);
         inventoryRepository.save(inventory);
     }
+
+    public void deleteProduct(String id){
+        if(!inventoryRepository.existsById(id)){
+            throw new RuntimeException("No such Product exists with given ID");
+        }
+        inventoryRepository.deleteById(id);
+    }
+
+    public Integer getQuantity(String id){
+        InventoryEntity inventory = inventoryRepository.findById(id).orElseThrow(() -> new RuntimeException("No such Product exists with given ID"));
+        return inventory.getQuantity();
+    }
 }

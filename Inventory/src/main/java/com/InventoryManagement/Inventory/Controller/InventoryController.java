@@ -27,4 +27,17 @@ public class InventoryController {
         inventoryService.updateQuantity(id,quantity);
     }
 
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping("/deleteProduct")
+    public void deleteProduct(@RequestParam String id){
+        inventoryService.deleteProduct(id);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping("/getQuantity")
+    public Integer getQuantity(@RequestParam String id){
+        return inventoryService.getQuantity(id);
+    }
 }
