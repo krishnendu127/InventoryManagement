@@ -1,5 +1,6 @@
 package com.InventoryManagement.Supplier.Controller;
 
+
 import com.InventoryManagement.Supplier.DTO.SupplierRequest;
 import com.InventoryManagement.Supplier.Entity.ProductEntity;
 import com.InventoryManagement.Supplier.Service.SupplierService;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/supplier")
 public class SupplierController {
     private final SupplierService supplierService;
-
 
     @PostMapping
     @RequestMapping("/addSupplier")
@@ -40,5 +40,12 @@ public class SupplierController {
     @ResponseStatus(HttpStatus.OK)
     public void deleteProductBySupplier(@RequestParam String supplierId,@RequestParam String productId){
         supplierService.deleteProductBySupplier(supplierId,productId);
+    }
+
+    @RequestMapping("/updateQuantity")
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void updateQuantity(@RequestParam String id, @RequestParam Integer quantity){
+        supplierService.updateQuantity(id,quantity);
     }
 }
