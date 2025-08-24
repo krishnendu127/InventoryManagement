@@ -19,4 +19,11 @@ public class ProductController {
     public void createProduct(@RequestBody ProductRequest productRequest){
         productService.createProduct(productRequest);
     }
+
+    @DeleteMapping
+    @RequestMapping("/deleteProduct")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteProduct(@RequestParam String id){
+        productService.deleteProduct(id);
+    }
 }
