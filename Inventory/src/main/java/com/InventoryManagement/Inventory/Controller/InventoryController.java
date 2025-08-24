@@ -1,4 +1,30 @@
 package com.InventoryManagement.Inventory.Controller;
 
+import com.InventoryManagement.Inventory.DTO.InventoryRequest;
+import com.InventoryManagement.Inventory.Entity.InventoryEntity;
+import com.InventoryManagement.Inventory.Service.InventoryService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/Inventory")
 public class InventoryController {
+    private final InventoryService inventoryService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping("/addProduct")
+    public void addProduct(@RequestBody InventoryRequest inventoryRequest){
+        inventoryService.addProduct(inventoryRequest);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(("/updateQuantity"))
+    public void updateQuantity(@RequestParam String id, @RequestParam Integer quantity){
+        inventoryService.updateQuantity(id,quantity);
+    }
+
 }
