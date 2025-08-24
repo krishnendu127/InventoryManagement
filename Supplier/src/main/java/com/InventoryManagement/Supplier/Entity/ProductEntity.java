@@ -7,17 +7,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Data
-@Document(collection = "Supplier")
-public class SupplierEntity {
+@Document(collection = "Product")
+public class ProductEntity {
     @Id
-    private String id;
-    private String name;
-    private String email;
-    private List<ProductEntity> products;
+    private String productId;
+    private String productName;
+    private String productDescription;
 }
