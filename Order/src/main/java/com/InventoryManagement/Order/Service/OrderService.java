@@ -14,7 +14,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class OrderService {
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
     public void placeOrder(OrderRequest orderRequest){
         OrderEntity orderEntity = OrderEntity.builder()
                 .id(orderRequest.id())

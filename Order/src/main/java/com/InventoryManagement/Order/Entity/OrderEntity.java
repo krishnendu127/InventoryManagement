@@ -10,7 +10,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(value = "order")
+@Document(value = "Order")
 public class OrderEntity {
     @Id
     private String id;
