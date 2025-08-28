@@ -8,6 +8,7 @@ import com.InventoryManagement.Order.Repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.List;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final InventoryClient inventoryClient;
+    private final KafkaTemplate<String,OrderRequest> kafkaTemplate;
     public void placeOrder(OrderRequest orderRequest){
         OrderEntity orderEntity = OrderEntity.builder()
                 .id(orderRequest.id())
@@ -41,6 +43,7 @@ public class OrderService {
             }
         }
         orderRepository.save(orderEntity);
+        kafkaTemplate.send("order-topic",orderRequest);
     }
 
     public OrderResponse getOrderDetailsById(String id){

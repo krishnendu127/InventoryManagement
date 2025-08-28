@@ -13,6 +13,7 @@
         <module name="Order" />
         <module name="Product" />
         <module name="Supplier" />
+        <module name="Notification" />
         <module name="Inventory" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Inventory" options="-parameters" />
+      <module name="Notification" options="-parameters" />
       <module name="Order" options="-parameters" />
       <module name="Product" options="-parameters" />
       <module name="Supplier" options="-parameters" />
