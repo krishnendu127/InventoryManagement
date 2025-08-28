@@ -17,5 +17,7 @@ public class OrderEntity {
     private List<String> productId;
     private List<String> quantity;
     private String shippingDetails;
+    private String customerId;
+    private String customerContact;
     private boolean payment;
 }
